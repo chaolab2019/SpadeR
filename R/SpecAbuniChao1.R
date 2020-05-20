@@ -120,12 +120,17 @@ SpecAbuniChao1 <-
     i <- rep(sort(unique(xx)),each = length(unique(xx)))
     j <- rep(sort(unique(xx)),length(unique(xx)))       # all combination
     
-   
-    if (f1 - f2*f3/2/f4 > 0 & f3 != 0){
+    if(f4>0){
+      if (f1 - f2*f3/2/f4 > 0 & f3 != 0){
         var_iChao1 <- sum(mapply(function(i, j)diff(i, x)*diff(j, x)*COV.f(i, j), i, j))
-    } else {
+      } else {
         var_iChao1 <- var_Chao1
+      }
+    }else{
+      var_iChao1 <- var_Chao1
     }
+   
+   
     
     if (var_iChao1 > 0){
       var_iChao1 <- var_iChao1
